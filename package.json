@@ -1,0 +1,15 @@
+{
+  "name": "winsmoderation",
+  "version": "2.0.0",
+  "description": "Discord bot for moderation Discord-servers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Makar Lyzhnik",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.1.0"
+  }
+}

@@ -1,6 +1,6 @@
-# WinsModeration v.2.0 | Moderation bot for Discord-servers
+# WinsModeration v.2.0 | Moderation BOT for Discord-servers
 
-Discord-bot for easy moderation of your servers.
+Discord-BOT for easy moderation of your servers.
 
 ## Requirements
 * [Discord.js](https://discord.js.org/#/);

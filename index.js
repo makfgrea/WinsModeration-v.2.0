@@ -1,5 +1,11 @@
 const { Client, RichEmbed, Collection } = require("discord.js");
 const { config } = require("dotenv");
+const serverStats = {
+    guildID: '544122605628817411',
+    totalUsersID: '627838843344912394',
+    memberCountID: '627838893261193236',
+    botCountID: '627838940535193610'
+};
 
 const client = new Client({
     disableEveryone: false
@@ -18,6 +24,20 @@ config({
 
 client.on("ready", () => {
     console.log(`I am now online, my name is ${client.user.username}`);
+
+client.on('guildMemberAdd', member => {
+    if (member.guild.id !== serverStats.guildID) return;
+    client.channels.get(serverStats.totalUsersID).setName(`Total Users: ${member.guild.memberCount}`);
+    client.channels.get(serverStats.memberCountID).setName(`Member Count: ${member.guild.members.filter(m => !m.user.bot).size}`);
+    client.channels.get(serverStats.botCountID).setName(`Bot Count: ${member.guild.members.filter(m => m.user.bot).size}`);
+});
+
+client.on('guildMemberRemove', member => {
+    if (member.guild.id !== serverStats.guildID) return;
+    client.channels.get(serverStats.totalUsersID).setName(`Total Users: ${member.guild.memberCount}`);
+    client.channels.get(serverStats.memberCountID).setName(`Member Count: ${member.guild.members.filter(m => !m.user.bot).size}`);
+    client.channels.get(serverStats.botCountID).setName(`Bot Count: ${member.guild.members.filter(m => m.user.bot).size}`);
+});
 
     client.user.setPresence({
         status: "dnd",
